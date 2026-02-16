@@ -10,7 +10,7 @@ namespace GroupTool
  *
  */
 
-
+    // Soren skriver lige en comment.
 {
     internal class Program
     {
