@@ -12,6 +12,7 @@ namespace GroupTool
 
     // Soren skriver lige en comment.
     // Daniel skriver lige endnu en comment :)
+    // Lola skriver lige endnu endnu en comment. :P
 {
     internal class Program
     {
