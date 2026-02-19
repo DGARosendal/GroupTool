@@ -14,6 +14,7 @@ namespace GroupTool
     // Daniel skriver lige endnu en comment :)
     // Lola skriver lige endnu endnu en comment. :P
     // Dzemila skriver en ekstra comment til folket :D
+    // Hej Hej
 {
     internal class Program
     {
