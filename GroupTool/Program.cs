@@ -71,6 +71,7 @@ namespace GroupTool
         * opdele sin egen gruppe i to mindre grupper (case 1), om man skal
         * sendes ud enkeltvis i andre grupper (case 2) for at give feedback/dele gruppens 
         * arbejde, eller (case 3) at man skal foretage en midlertid justering i gruppens medlemmer. 
+        * Case 9 tilføjet som exit til programmet. 
         */
         public static void ShowMenu()
         {
@@ -80,7 +81,8 @@ namespace GroupTool
             while (true) // Bliver ved med at køre indtil den brydes af enten break; eller return; 
             {
             
-            Console.Write("Skriv 1 for gruppeopdeling i mindre grupper eller 2 for individuel gruppeudsendelse til andre grupper. \nAlternativt kan du skrive 3, hvis du skal modificere listen af medlemmer: ");
+            Console.Write("Skriv 1 for gruppeopdeling i mindre grupper eller 2 for individuel gruppeudsendelse til andre grupper. \nAlternativt kan du skrive 3, hvis du skal modificere listen af medlemmer. Skriv 9 for at afslutte programmet: ");
+            Console.WriteLine(""); // Læsbarhed. 
 
             string taskAssignment = Console.ReadLine();
 
@@ -89,23 +91,27 @@ namespace GroupTool
                     case "1":
                         CreateMinorGroups();
                         ShowMinorGroups();
-                        break; // break; bryder løkken
+                        break; // break; bryder ud af switchen. 
 
                     case "2":
                         CreateExpeditionGroups();
                         ShowExpeditionGroups();
-                        break; // break; bryder løkken
+                        break; // break; bryder ud af switchen. 
 
                     case "3":
                         // Metode til (midlertidigt) at opdatere gruppelisten i tilfælde af fravær.
                         UpdateGroupList();
-                        break; // break; bryder løkken
+                        break; // break; bryder ud af switchen. 
+
+                    case "9":
+                        Console.WriteLine("Programmet afsluttes. Held og lykke ude i grupperne!");
+                        return; // return; bryder ud af hele while (true) løkken.
 
                     default:
                         Console.WriteLine("Ugyldigt valg.");
                         Console.WriteLine(""); //Tom linje før menuen vises, for at øge læsbarheden.
                         // ShowMenu(); // Denne looper tilbage til hovedmenuen, hvis valget var forkert. ==> Erstattet af while-løkken ift. menuen.
-                        break; // break; bryder løkken
+                        break; // break; bryder ud af switchen. 
                 }
             }
         }
