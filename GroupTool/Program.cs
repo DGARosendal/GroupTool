@@ -68,40 +68,45 @@ namespace GroupTool
 
         /*
         * I ShowMenu() vælger man gruppe-aktivitet, dvs. enten at man skal
-        * opdele sin egen gruppe i to mindre grupper (1) eller om man skal
-        * sendes ud enkeltvis i andre grupper (2) for at give feedback/dele gruppens arbejde.
+        * opdele sin egen gruppe i to mindre grupper (case 1), om man skal
+        * sendes ud enkeltvis i andre grupper (case 2) for at give feedback/dele gruppens 
+        * arbejde, eller (case 3) at man skal foretage en midlertid justering i gruppens medlemmer. 
         */
         public static void ShowMenu()
         {
 
             Console.ForegroundColor = ConsoleColor.Green; // Sætter farven i konsollen til grøn, kan evt. nulstilles via "Console.ResetColor();" senere. 
+
+            while (true) // Bliver ved med at køre indtil den brydes af enten break; eller return; 
+            {
+            
             Console.Write("Skriv 1 for gruppeopdeling i mindre grupper eller 2 for individuel gruppeudsendelse til andre grupper. \nAlternativt kan du skrive 3, hvis du skal modificere listen af medlemmer: ");
 
             string taskAssignment = Console.ReadLine();
 
-            switch (taskAssignment)
-            {
-                case "1":
-                    CreateMinorGroups();
-                    ShowMinorGroups();
-                    break;
+                switch (taskAssignment)
+                {
+                    case "1":
+                        CreateMinorGroups();
+                        ShowMinorGroups();
+                        break; // break; bryder løkken
 
-                case "2":
-                    CreateExpeditionGroups();
-                    ShowExpeditionGroups();
-                    break;
+                    case "2":
+                        CreateExpeditionGroups();
+                        ShowExpeditionGroups();
+                        break; // break; bryder løkken
 
-                case "3":
-                    // Metode til (midlertidigt) at opdatere gruppelisten i tilfælde af fravær.
-                    UpdateGroupList();
-                    break;
+                    case "3":
+                        // Metode til (midlertidigt) at opdatere gruppelisten i tilfælde af fravær.
+                        UpdateGroupList();
+                        break; // break; bryder løkken
 
-                default:
-                    Console.WriteLine("Ugyldigt valg.");
-                    Console.WriteLine(""); //Tom linje før menuen vises, for at øge læsbarheden.
-                    ShowMenu(); // Denne looper tilbage til hovedmenuen, hvis valget var forkert.
-                    break;
-
+                    default:
+                        Console.WriteLine("Ugyldigt valg.");
+                        Console.WriteLine(""); //Tom linje før menuen vises, for at øge læsbarheden.
+                        // ShowMenu(); // Denne looper tilbage til hovedmenuen, hvis valget var forkert. ==> Erstattet af while-løkken ift. menuen.
+                        break; // break; bryder løkken
+                }
             }
         }
 
@@ -207,7 +212,7 @@ namespace GroupTool
             }
 
             Console.WriteLine(""); //Tom linje før menuen vises, for at øge læsbarheden.
-            ShowMenu(); // Vender tilbage til hovedmenuen.
+          //ShowMenu(); // Vender tilbage til hovedmenuen. ==> Når en case er færdig, vender koden automatisk tilbage til starten af while(true) i HovedMenuen og viser menuen igen, derfor redundant nu.
         }
 
         /*
@@ -321,7 +326,7 @@ namespace GroupTool
             }
 
             Console.WriteLine(""); //Tom linje før menuen vises, for at øge læsbarheden.
-            ShowMenu(); // Vender tilbage til hovedmenuen.
+          //ShowMenu(); // Vender tilbage til hovedmenuen. ==> Når en case er færdig, vender koden automatisk tilbage til starten af while(true) i HovedMenuen og viser menuen igen, derfor redundant nu.
         }
 
 
@@ -345,7 +350,7 @@ namespace GroupTool
             if (string.IsNullOrWhiteSpace(holdBackupGroupMembers))
             {
                 Console.WriteLine("Ingen navne indtastet. Vender tilbage til hovedmenuen (og den fulde medlemsliste af gruppen benyttes).\n");
-                ShowMenu(); // Vi bliver sendt tilbage til hovedmenuen. 
+                // ShowMenu(); // Vi bliver sendt tilbage til hovedmenuen ==> Når en case er færdig, vender koden automatisk tilbage til starten af while(true) i HovedMenuen og viser menuen igen.
                 return; // Og "return;" stopper metoden nedenfor i at fortsætte videre. 
             }
 
@@ -363,11 +368,11 @@ namespace GroupTool
 
             foreach(string name in backupGroupMembers)
             {
-                Console.WriteLine(name);
+                Console.WriteLine(name);    
             }
 
             Console.WriteLine(""); //Tom linje før menuen vises, for at øge læsbarheden.
-            ShowMenu(); // Vender tilbage til hovedmenuen.
+            //ShowMenu(); // Vender tilbage til hovedmenuen. ==> Når en case er færdig, vender koden automatisk tilbage til starten af while(true) i HovedMenuen og viser menuen igen, derfor redundant nu. 
         }
 
     }
