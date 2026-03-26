@@ -33,7 +33,7 @@ namespace GroupTool
             "Daniel",
             "Søren",
             "Benjamin",
-            "Selahaddini (Sela)",
+            "Selahaddini (Selo)",
             "Blessing"
             };
         // 1. gruppe: 
